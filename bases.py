@@ -45,6 +45,20 @@ x, y, z = 1, 2, 3
 print(x + y + z) # 6
 
 
+# Desestructuring. Desde aquí lo que va a hacer es sacar cada letra en una variable
+language = 'Python'
+
+a,b,c,d,e,f = language # desempaquetar caracteres y asignarlos a variables
+print(a) # P
+print(b) # y
+print(c) # t
+print(d) # h
+print(e) # o
+print(f) # n
+
+
+
+
 # 'sep' es un parámetro que se utiliza para separar los valores que se imprimen en la misma línea. Por defecto, el valor 
 # de 'sep' es un espacio en blanco, pero se puede cambiar a cualquier otro carácter o cadena de caracteres.
 print(first_name, last_name, country, age, is_married)
@@ -216,3 +230,13 @@ print('Valor después de reducir: ', reduced) # 15
 
 # 'any' es una función que se utiliza para comprobar si al menos uno de los elementos de una lista, tupla o conjunto es verdadero.
 print('Al menos uno de los elementos es verdadero: ', any([False, False, True])) # True
+
+
+# type() es una función que se utiliza para obtener el tipo de dato de un valor o variable.
+print('Tipo de dato de un valor: ', type(1)) # <class 'int'>
+print('Tipo de dato de una variable: ', type(first_name)) # <class 'str'>
+print(type(None))
+# es un str que tiene forma de float que viene de un método len()
+print((str(float(len('python')))))
+# <class 'str'>; siempre tiene que pasar por 'float' para sacarlo finalmente como 'int'
+print(type(int(float(str(float(len('python')))))))
