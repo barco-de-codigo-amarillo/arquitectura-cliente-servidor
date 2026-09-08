@@ -6,4 +6,3 @@ print('B in Animal', 'B' in 'Animal') # False - no hay b mayúscula
 print('coding' in 'coding for all') # True - porque codificar para todos tiene la palabra codificar
 print('a in an:', 'a' in 'an')      # True
 print('4 is 2 ** 2:', 4 is 2 ** 2)   # True
-
