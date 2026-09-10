@@ -3032,3 +3032,28 @@ top_10_poblacion = countries_data[:10]
 for country in top_10_poblacion:
     print(f"- {country['name']}: {country['population']}")
 
+
+# Sin .sort()
+top_10_paises = []
+
+for country in countries_data:
+    population = country['population']
+    name = country['name']
+    new_country = [population, name]
+
+    itExistInList = False
+    for i in range(len(top_10_paises)):
+        if population > top_10_paises[i][0]:
+            top_10_paises.insert(i, new_country)
+            itExistInList = True
+            break
+
+    if not itExistInList and len(top_10_paises) < 10:
+        top_10_paises.append(new_country)
+
+    if len(top_10_paises) > 10:
+        top_10_paises.pop()
+
+print("--- TOP 10 PAÍSES MÁS POBLADOS (Sin usar sort) ---")
+for population, name in top_10_paises:
+    print(f'{name}: {population}')
