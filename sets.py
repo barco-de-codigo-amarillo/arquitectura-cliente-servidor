@@ -43,6 +43,9 @@ st.clear()
 st = {'item1', 'item2', 'item3', 'item4'}
 del st
 
+# Discard
+st.discard('item5') # si no está no produce error
+
 # Converting list to set
 lst = ['item1', 'item2', 'item3', 'item4', 'item1']
 st = set(lst)  # {'item2', 'item4', 'item1', 'item3'} - the order is random, because sets in general are unordered
@@ -100,3 +103,15 @@ python = {'p', 'y', 't', 'h', 'o','n'}
 dragon = {'d', 'r', 'a', 'g', 'o','n'}
 python.symmetric_difference(dragon)  # {'r', 't', 'p', 'y', 'g', 'a', 'd', 'h'}
 # python ^ dragon
+
+# Disjoint
+"""
+two sets do not have a common item or items
+"""
+even_numbers = {0, 2, 4 ,6, 8}
+odd_numbers = {1, 3, 5, 7, 9}
+even_numbers.isdisjoint(odd_numbers) # True, because no common item
+
+python = {'p', 'y', 't', 'h', 'o','n'}
+dragon = {'d', 'r', 'a', 'g', 'o','n'}
+python.isdisjoint(dragon)  # False, there are common items {'o', 'n'}
