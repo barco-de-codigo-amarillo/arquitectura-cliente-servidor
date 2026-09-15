@@ -83,6 +83,45 @@ def greeting():
 print(greeting())   # WELCOME TO PYTHON
 print('****************************************************')
 
+# Decorator function II
+def make_pretty(func): # decorator function
+    # define the inner function 
+    def inner():
+        # add some additional behavior to decorated function
+        print("I got decorated")
+
+        # call original function
+        func()
+    # return the inner function
+    return inner
+
+# define ordinary function
+def ordinary():
+    print("I am ordinary")
+    
+# decorate the ordinary function
+decorated_func = make_pretty(ordinary)
+
+# call the decorated function
+decorated_func()
+print('****************************************************')
+
+
+# @ Symbol With Decorator (the same function before)
+def make_pretty(func): # recibe una función de parámetro
+
+    def inner():
+        print("I got decorated")
+        func()
+    return inner
+
+@make_pretty # recibe una 'ordinary' de parámetro
+def ordinary():
+    print("I am ordinary")
+
+ordinary()  
+print('****************************************************')
+
 
 '''These decorator functions are higher order functions
 that take functions as parameters'''
@@ -109,6 +148,28 @@ def split_string_decorator(function):
 def greeting():
     return 'Welcome to Python'
 print(greeting())   # ['WELCOME', 'TO', 'PYTHON']
+print('****************************************************')
+
+# Decorator Functions with parameters
+def smart_divide(func):
+    def inner(a, b):
+        print("I am going to divide", a, "and", b)
+        if b == 0:
+            print("Whoops! cannot divide")
+            return
+
+        return func(a, b)
+    return inner
+
+@smart_divide
+def divide(a, b):
+    print(a/b)
+
+divide(2,5)
+
+divide(2,0)
+print('***************************************************')
+
 
 def decorator_with_parameters(function):
     def wrapper_accepting_parameters(para1, para2, para3):
@@ -121,7 +182,44 @@ def print_full_name(first_name, last_name, country):
     print("I am {} {}. I love to teach.".format(
         first_name, last_name))
 
-print_full_name("Barbara", "Liskov",'California')
+print_full_name('Barbara', 'Liskov','California')
+print('****************************************************')
+
+
+# def inner(*args, **kwargs):: Es la función "envoltorio" (el wrapper) [INDEX]. 
+#   Los símbolos *args y **kwargs son un comodín que le permite a este envoltorio 
+#   aceptar cualquier tipo y cantidad de argumentos que tenga la función original 
+#   (no importa si recibe texto, números o nada).
+
+# func(*args, **kwargs): Ejecuta la función original con los argumentos que le correspondan 
+def star(func):
+    def inner(*args, **kwargs):
+        print("*" * 15)
+        func(*args, **kwargs)
+        print("*" * 15)
+    return inner
+
+
+def percent(func):
+    def inner(*args, **kwargs):
+        print("%" * 15)
+        func(*args, **kwargs)
+        print("%" * 15)
+    return inner
+
+
+@star
+@percent
+def printer(msg):
+    print(msg)
+
+printer("Hello") # equivalent to : printer = start(percent(printer))
+
+print('********************NEXT:********************************')
+print('*********************MAP*********************************')
+print('*******************FILTER********************************')
+print('*******************REDUCE********************************')
+
 
 # Python - Map function
 # the map() function is a built-in function that takes a function and iterable as parameters
@@ -161,7 +259,7 @@ def add_two_nums(x, y):
     return int(x) + int(y)
 
 
-from functools import reduce # Importación obligatoria
+from functools import reduce # Importación obligatoria necesaria 1 vez en el archivo
 
 total = reduce(add_two_nums, numbers_str)
 print(total)    # 15
