@@ -333,4 +333,3 @@ ten_most_spoken = most_spoken_languages(countries_data, 10)
 print("--- TEN MOST SPOKEN LANGUAGES BY LOCATION ---")
 for rank, (lang, count) in enumerate(ten_most_spoken, 1):
     print(f"{rank}. {lang}: spoken in {count} countries")
-
