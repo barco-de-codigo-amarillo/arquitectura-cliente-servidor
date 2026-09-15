@@ -42,3 +42,7 @@ print(f"Minutos en binario: {min_bin}")
 
 
 
+"""
+Usos de bin() para IoT(programación de microcontroladoras), permisos de seguridad y sistemas de archivos, redes, direcciones IP y MAC,
+optimización extrema de espacio(Flags).
+"""
