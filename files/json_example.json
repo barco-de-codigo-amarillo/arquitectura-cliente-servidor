@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Estonia",
+        "capital": "Tallinn",
+        "languages": ["Estonian"],
+        "population": 1300000,
+        "is_island": false
+    },
+    {
+        "name": "Finland",
+        "capital": "Helsinki",
+        "languages": ["Finnish", "Swedish"],
+        "population": 5500000,
+        "is_island": false
+    },
+    {
+        "name": "Iceland",
+        "capital": "Reykjavík",
+        "languages": ["Icelandic"],
+        "population": 390000,
+        "is_island": true
+    }
+]

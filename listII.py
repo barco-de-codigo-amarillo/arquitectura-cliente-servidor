@@ -119,13 +119,13 @@ to insert a single item at a specified index in a list
 """
 countries.insert(3, 'Greece')
 print(countries)
-countries(6, 'Spain')
+countries.insert(6, 'Spain')
 print(countries)
 
 
 # Remove
 countries.remove('Spain')
-countries.remove('Portugal')
+countries.remove('Greece')
 print(countries)
 
 
@@ -151,7 +151,7 @@ print(countries)
 del countries[1:3]
 print(countries)
 del countries
-print(countries) # This should give: NameError: name 'countries' is not defined
+#print(countries) # This should give: NameError: name 'countries' is not defined
 
 
 # Clear
@@ -177,7 +177,7 @@ print(countries)
 seprador.join(lst)
 """
 positive_numbers = [1, 2, 3, 4, 5]
-numbers_join = '-'.join(positive_numbers)
+numbers_join = '-'.join(str(positive_numbers))
 print(numbers_join)
 
 """
@@ -195,6 +195,14 @@ print(integers) # [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
 negative_numbers.extend(zero)
 negative_numbers.extend(positive_numbers)
 print('Integers:', negative_numbers) # Integers: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+
+lst_one = [1, 2, 3]
+lst_two = [4, 5, 6]
+lst = [0, *lst_one, *lst_two]
+print(lst)
+lst = [0].extend(lst_two) # lst_zero = [0]
+lst_two.extend(lst_one)
+print(lst_one)
 
 
 # Count

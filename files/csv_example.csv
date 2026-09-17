@@ -1,0 +1,4 @@
+name,capital,population,is_island
+Estonia,Tallinn,1300000,False
+Finland,Helsinki,5500000,False
+Iceland,Reykjavík,390000,True
