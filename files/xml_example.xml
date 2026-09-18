@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<countries>
+    <country>
+        <name>Estonia</name>
+        <capital>Tallinn</capital>
+        <languages>
+            <language>Estonian</language>
+        </languages>
+        <population>1300000</population>
+        <is_island>false</is_island>
+    </country>
+    <country>
+        <name>Finland</name>
+        <capital>Helsinki</capital>
+        <languages>
+            <language>Finnish</language>
+            <language>Swedish</language>
+        </languages>
+        <population>5500000</population>
+        <is_island>false</is_island>
+    </country>
+    <country>
+        <name>Iceland</name>
+        <capital>Reykjavík</capital>
+        <languages>
+            <language>Icelandic</language>
+        </languages>
+        <population>390000</population>
+        <is_island>true</is_island>
+    </country>
+</countries>

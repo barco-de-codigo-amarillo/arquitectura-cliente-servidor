@@ -1,0 +1,12 @@
+Paso 1: Instalar Python y Pip desde los repositorios de Arch
+sudo pacman -Syu python-pip
+
+Paso 2: Crear tu Entorno Virtual (Obligatorio en Arch! situarse en el directorio de trabajo y en el usuario utilizado)
+python -m venv .venv
+
+Paso 3: Activar el Entorno en VS Code
+source .venv/bin/activate
+
+Paso 4: Probar la instalación
+pip install --upgrade pip
+pip install requests

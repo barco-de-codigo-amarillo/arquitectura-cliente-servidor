@@ -1,4 +1,3 @@
-name,capital,population,is_island
-Estonia,Tallinn,1300000,False
-Finland,Helsinki,5500000,False
-Iceland,Reykjavík,390000,True
+name,country,city,skills
+nombre,país,ciudad,habilidad
+Luis,Finland,Helsinki,C++

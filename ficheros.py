@@ -21,7 +21,7 @@ print(txt)
 f.close()
 
 # print the first 10 characters of the text file
-f = open('./files/reading_file_example.txt')
+f = open('./documentation/packageManager.txt')
 txt = f.read(10)
 print(type(txt))
 print(txt)
@@ -30,7 +30,7 @@ f.close()
 """
 readline(): read only the first line
 """
-f = open('./files/reading_file_example.txt')
+f = open('./documentation/packageManager.txt')
 line = f.readline()
 print(type(line))
 print(line)
@@ -39,14 +39,14 @@ f.close()
 """
 readlines(): read all the text line by line and returns a list of lines
 """
-f = open('./files/reading_file_example.txt')
+f = open('./documentation/packageManager.txt')
 lines = f.readlines()
 print(type(lines))
 print(lines)
 f.close()
 
 # Another way to get all the lines as a list is using splitlines():
-f = open('./files/reading_file_example.txt')
+f = open('./documentation/packageManager.txt')
 lines = f.read().splitlines()
 print(type(lines))
 print(lines)
@@ -56,7 +56,7 @@ f.close()
 After we open a file, we should close it. There is a new way of opening files using with - closes the files by itself.
 """
 
-with open('./files/reading_file_example.txt') as f:
+with open('./documentation/packageManager.txt') as f:
     lines = f.read().splitlines()
     print(type(lines))
     print(lines)
@@ -76,7 +76,7 @@ Deleting files
 """
 
 import os
-os.remove('./files/example.txt')
+#os.remove('./files/example.txt')
 
 
 # If the file does not exist, the remove method will raise an error, so it is good to use a condition like this:
@@ -98,21 +98,21 @@ countries_list = '''[
         "capital": "Tallinn",
         "languages": ["Estonian"],
         "population": 1300000,
-        "is_island": False
+        "is_island": false
     },
     {
         "name": "Finland",
         "capital": "Helsinki",
         "languages": ["Finnish", "Swedish"],
         "population": 5500000,
-        "is_island": False
+        "is_island": false
     },
     {
         "name": "Iceland",
         "capital": "Reykjavík",
         "languages": ["Icelandic"],
         "population": 390000,
-        "is_island": True
+        "is_island": true
     }
 ]'''
 
@@ -121,7 +121,7 @@ import json
 countries_dct_I = json.loads(countries_list)
 print(type(countries_dct_I))
 print(countries_dct_I)
-print(countries_dct_I['name'])
+print(countries_dct_I[0]['name'])
 
 # Dictionary
 countries_dct_II = {
@@ -148,7 +148,7 @@ with open('./files/json_example.json', 'w', encoding='utf-8') as f: # encoding=u
 """
 Punteros: .seek(n)
 """
-with open("json_example.json", "r", encoding="utf-8") as archivo:
+with open("./files/json_example.json", "r", encoding="utf-8") as archivo:
     # 1. Leemos todo el contenido por primera vez
     primer_intento = archivo.read()
     print("--- Primera Lectura ---")
@@ -254,6 +254,44 @@ print(f"La capital de {datos_decodificados['name']} es {datos_decodificados['cap
 # Cerramos el fichero virtual para liberar el espacio de la memoria RAM
 fichero_virtual.close()
 
+"""
+Añadir una librería más y reemplazar los datos del último conjunto claves - valores de un objeto JSON,
+descargar del json a string, convertirlo a lista de diccionario, hacerle el append 
+y proceder con with open y luego .dump()
+"""
+# Reemplazar una última línea de un objeto JSON
+import json
+
+# 1. PROCEDER CON WITH OPEN (Modo lectura 'r')
+with open("./files/json_example.json", "r", encoding="utf-8") as archivo_json:
+    # 2. CONVERTIRLO A LISTA DE DICCIONARIOS (Carga directa desde el fichero)
+    lista_paises = list(json.load(archivo_json))
+# Líneas de diagnóstico
+print("Tipo de dato devuelto:", type(lista_paises))
+# print("Último elemento de la lista:", lista_paises[-1]) # Aislar para evitar errores de código poir ejecuciones anteriores
+
+# 3. REEMPLAZAR LOS DATOS DEL ÚLTIMO CONJUNTO (Modificamos el índice -1)
+# Por ejemplo, cambiamos la población de Islandia si ha crecido
+#lista_paises[-1]["population"] = 400000 
+
+# 4. HACERLE EL APPEND (Añadimos un país o librería nueva a la lista en memoria)
+nuevo_pais = {
+    "name": "Norway",
+    "capital": "Oslo",
+    "languages": ["Norwegian"],
+    "population": 5400000,
+    "is_island": False
+}
+lista_paises.append(nuevo_pais)
+
+# 5. PROCEDER CON WITH OPEN (Modo escritura 'w' para sobrescribir el archivo)
+with open("./files/json_example.json", "w", encoding="utf-8") as archivo_json:
+    # 6. Y LUEGO .DUMP() (Volcar los datos de la RAM de vuelta al disco duro)
+    json.dump(lista_paises, archivo_json, indent=4, ensure_ascii=False)
+
+print("Archivo actualizado, modificado y guardado con éxito.")
+
+
 
 """
 csv - Comma-Separated Values o Valores Separados por Comas
@@ -303,7 +341,7 @@ with open("paises.csv", "r", encoding="utf-8") as archivo:
 import csv
 
 # Leemos directamente desde el archivo externo que creamos en el Paso 1
-with open("csv_example.csv", "r", encoding="utf-8") as archivo:
+with open("./files/csv_example.csv", "r", encoding="utf-8") as archivo:
     # Usamos DictReader para que asocie automáticamente cada dato con su cabecera (columna)
     lector_diccionario = csv.DictReader(archivo)
     
@@ -324,6 +362,32 @@ with open('./files/csv_example.csv') as f:
             line_count += 1
         else:
             print(
-                f'\t{row[0]} is a teachers. He lives in {row[1]}, {row[2]}.')
+                f'{row[0]}, {row[1]}, {row[2]}.')
             line_count += 1
     print(f'Number of lines:  {line_count}')
+
+# ejemplo III
+with open('./files/csv_example.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+    # escribir encabezados
+    writer.writerow(['name', 'country', 'city', 'skills'])
+    # escribir datos
+    writer.writerow(['nombre', 'país', 'ciudad', 'habilidad'])
+    writer.writerow(['Luis', 'Finland', 'Helsinki', 'C++'])
+
+"""
+XML 
+"""
+
+import xml.etree.ElementTree as ET
+tree = ET.parse('./files/xml_example.xml')
+root = tree.getroot()
+print('Root tag:', root.tag)
+print('Attribute:', root.attrib)
+for child in root:
+    print('field: ', child.tag, child.text.strip())
+
+tag_container = root.find('languages')
+if tag_container is not None:
+    language_lst = [language.text for language in tag_container if language.text]
+    print(language_lst)
