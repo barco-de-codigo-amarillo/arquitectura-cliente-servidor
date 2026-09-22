@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}Inicio | Mi Sitio Web{% endblock %}
+
+{% block content %}
+    <section class="welcome-section" style="margin-bottom: 3rem;">
+        <h1>Bienvenido a la app</h1>
+        <p>Este es un espacio limpio y fluido que respeta las preferencias del sistema de tus usuarios (Modo claro y oscuro automático).</p>
+        <a href="/about" class="btn">Saber más</a>
+    </section>
+
+    <section class="blog-section">
+        <h2>Bitácora de Desarrollo</h2>
+        <p>Explora nuestras últimas publicaciones del blog:</p>
+        
+        <div class="lista-posts" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- CORREGIDO: Iteramos sobre 'posts' -->
+            {% for id, post in posts.items() %}
+                <div style="padding: 1rem 0; border-bottom: 1px dashed var(--border-color);">
+                    <h3 style="margin-bottom: 0.5rem;">
+                        <a href="{{ url_for('ver_post', post_id=id) }}" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">
+                            {{ post.titulo }} →
+                        </a>
+                    </h3>
+                    <small style="color: var(--text-muted);">{{ post.fecha }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

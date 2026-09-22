@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título dinámico que cambia según la pestaña -->
+    <title>{% block title %}Mi Sitio Web{% endblock %}</title>
+    
+    <!-- Enlace absoluto al CSS para asegurar que los estilos NUNCA se pierdan -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- BARRA DE NAVEGACIÓN GLOBAL -->
+        <nav style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+            
+            <!-- Enlaces a páginas estáticas principales -->
+            <div class="paginas-principales" style="display: flex; gap: 1.5rem;">
+                <a href="{{ url_for('home') }}">Inicio</a>
+                <a href="{{ url_for('about') }}">Nosotros</a>
+            </div>
+            
+            <!-- Menú dinámico de publicaciones individuales -->
+            {% if posts %}
+            <div class="menu-posts" style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color);">
+                <span style="color: var(--text-muted); font-weight: bold;">Publicaciones:</span>
+                {% for id, post in posts.items() %}
+                    <a href="{{ url_for('ver_post', post_id=id) }}" style="text-decoration: underline;">
+                        {{ post.titulo }}
+                    </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </nav>
+
+        <!-- CONTENIDO DINÁMICO DE LAS VISTAS (Home, About, Post) -->
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <!-- Script de control de clases activas y animaciones fluidas -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
