@@ -1,8 +1,7 @@
 from datetime import datetime
 import os
-from flask import Flask,  Response, request
+from flask import Flask, Response, request, render_template
 import pymongo
-import json
 from bson import ObjectId
 from bson.json_util import dumps # cada vez que se vea un dumps en código se hace este y no el "natural" del módulo json
 
