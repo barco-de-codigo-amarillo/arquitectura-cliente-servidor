@@ -1,0 +1,6 @@
+"Tipo","Definición","Cantidad por tabla","Nulos"
+"Superclave","Cualquier conjunto de atributos que identifica de forma única una tupla (puede tener atributos ""de más"")","Muchas","Puede"
+"Clave candidata","Superclave mínima (sin atributos redundantes)","Una o más","Debe ser no nulo en la práctica"
+"Clave primaria","La clave candidata elegida por el diseñador","Exactamente una","No nulo, obligatorio"
+"Clave alternativa","Cualquier clave candidata no elegida como primaria","Cero o más","No nulo (recomendado)"
+"Clave foránea","Atributo(s) que referencia(n) a una clave candidata de otra tabla","Cero o más","Puede ser nulo"

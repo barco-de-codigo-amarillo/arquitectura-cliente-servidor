@@ -29,3 +29,4 @@ conteo_idiomas = {} # es un diccionario que supuestamente estamos llenando de pa
 
 top_10 = sorted(conteo_idiomas.items(), key=lambda x: x[1], reverse=True)[:10]
 
+# REdundacia: es la cualidad de que no se va ha alterar una tabla su info 
