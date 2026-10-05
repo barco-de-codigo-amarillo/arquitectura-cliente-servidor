@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@metamask/connect-solana": "^2.1.1"
+  }
+}

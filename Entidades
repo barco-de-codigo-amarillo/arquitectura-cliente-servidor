@@ -1,0 +1,7 @@
+Entidades:
+
+1.- Principales: son las de mayor importancia para el sistema. Contemplan la información básica del sistema y del resto de tipos de entidades se estructuran a su alrededor.
+
+2.- Intermedias: aparecerán como resultado de relaciones N-M entre entidades principales. Aquí obtendremos y su clave primaria será de tipo compuesta y a partir de las claves primarias pertenecientes a las entidades principales que forman esta relación N-M. En algunos casos noss interesará que la clave primaria no sea la agrupación de las claves foráneas y definirnos una primaria de tipo secuencia.
+
+3.- Auxiliares: son necesarias por los datos que iremos almacenando en ellos y su existencia responde a algún tipo de requerimiento del sistema.
